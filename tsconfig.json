@@ -1,0 +1,16 @@
+{
+  /* 编译选项 */
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+
+    /* Basic Options */
+    // "incremental": true,                         /* Enable incremental compilation */
+    "target": "ES2016",                             /*配置编译目标代码的版本标准  Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
+    "module": "commonjs",                           /* 配置编译目标使用的模块化标准 Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
+    "lib": ["es2016"],                              /*如果不配置这一项，我们可以使用document对象，或者window对象之类的， 默认的环境是浏览器环境（只写es2016是不包括浏览器环境的，只是node环境，所以浏览器的对象都不会有智能提示，以及会报错，需要安装@types/node,来增加node环境的全局变量 */
+    "outDir": "./dist", /* 编译结果输出的目录 */
+    "strictNullChecks": true
+  },
+  "include": ["./src"] /* 编译的文件夹 */
+  //"files": [] 指定需要编译的文件
+}
