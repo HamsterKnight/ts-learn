@@ -1,5 +1,5 @@
-require('./practice')
-let say = 'abc'
+require('./6.practice')
+let say:string = 'abc'
 function add(a:number, b:number) {
   return a + b
 }
@@ -22,3 +22,5 @@ type User = {
   name: String
   age: Number
 }
+let b: string = 'abc'
+console.log(1230)
