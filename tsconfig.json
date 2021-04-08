@@ -11,6 +11,7 @@
     /* "removeComments": true, // 编译结果移除注释 */
     "esModuleInterop": true // 启用es模块化交互非es模块化导出
     /* "noEmitOnError": true // 编译错误的时候不产生编译结果 */
+    /*"strictPropertyInitialization": true */ // 类中更加严格的属性检查
   },
   "include": ["./src"]
 }
