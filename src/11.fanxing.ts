@@ -1,69 +1,39 @@
-/* 函数使用泛型 */
-
-/* function take<T> (arr:T[], n:number) {
-  if(n >= arr.length) {
-    return arr
-  } else {
-    let temp:T[] = []
-    for(var i = 0; i < n; i++) {
-      temp.push(arr[i])
+/* 
+  字典类功能(键名、键值都分别保存在一个数组，数组的位置对应)
+  1.设置键值对，如果键值对已存在，则更新键值对的值
+  2.删除键值对
+  3.统计键值对的数量
+  4.获取键值
+  5.查询某个键是否存在
+  6.传参给回调函数,执行回调
+*/
+/* function Callback<K, V>(key:K, value:V):void {} */
+class Dictionary<K, V> {
+  private keys: K[] = []
+  private values: V[] = []
+  private _size: number = 0
+  // 设置和更新键值对
+  setKey(key:K, value:V) {
+    const index = this.keys.indexOf(key)
+    if(index < 0) {
+      this.keys.push(key)
+      this.values.push(value)
+      this._size++
+    } else {
+      this.values.splice(index, 1, value)
     }
-    return temp
+  }
+  deleteKey(key:K) {
+    const index = this.keys.indexOf(key)
+    if(index < 0) return
+    this.keys.splice(index, 1)
+    this.values.splice(index, 1)
+    this._size--
+  }
+  hasKey(key:K) {
+    return this.keys.includes(key)
+  }
+  get size() {
+    return this._size
   }
 }
-// 调用函数，确定泛型为number
-take<number>([1,2,3], 2)
-
-// 调用函数，确定泛型为string
-take<string>(["1", "2", "3"], 2) */
-
-/* 接口使用泛型 */
-
-// interface Test<T>  {
-//   a: T,
-//   test: (a:T, n:number) => boolean
-// }
-
-// let t2:Test<number> = {
-//   a:123,
-//   test: function (a, b) {
-//     return a - b > 0
-//   }
-// }
-
-// /* 类型别名使用泛型 */
-
-// type Test2<T> = {
-//   t: T
-// }
-// let t3:Test2<number> = {
-//   t: 123
-// }
-
-type hasNameProperty = {
-  name: string
-}
-
-function nameToUppperCase<T extends hasNameProperty>(obj:T) {
-  obj.name = obj.name.split(" ").map(_ => _[0].toUpperCase()+_.substr(1)).join(' ')
-  return obj
-}
-
-const te = {
-  name: "hello world"
-}
-nameToUppperCase(te)
-console.log(te)
-
-function minxinArray<T, K>(arr1:T[], arr2:K[]):(T | K)[] {
-  if(arr1.length != arr2.length) {
-    throw new Error('数组长度不一致')
-  }
-  const temp:(T|K)[] = []
-  for(var i = 0; i < arr1.length; i++) {
-    temp.push(arr1[i])
-    temp.push(arr2[i])
-  }
-  return temp
-}
-console.log(minxinArray([1,2,3], ['a', 'b', 'c']))
