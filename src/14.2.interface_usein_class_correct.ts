@@ -27,7 +27,7 @@ interface IWistomShow {
 class Lion extends Animal implements IFireShow {
   category: string = '狮子'
   singleFire() {
-    console.log('进行单火圈表演')
+    console.log(`进行单火圈表演${this.name}`)
   }
   doubleFire() {
     console.log('进行双火圈表演')
@@ -37,7 +37,7 @@ class Lion extends Animal implements IFireShow {
 class Tiger extends Animal implements IFireShow {
   category: string = '老虎'
   singleFire() {
-    console.log('进行单火圈表演')
+    console.log(`进行单火圈表演${this.name}`)
   }
   doubleFire() {
     console.log('进行双火圈表演')
@@ -65,7 +65,7 @@ const animals = [
   new Lion('小狮子', 2),
   new Tiger('小虎子', 2),
   new Monkey('小猴子', 2),
-  new Lion('小狗子', 2)
+  new Dog('小狗子', 2)
 ]
 
 // 下面我们让会各个技能的动物出来表演一下
@@ -82,7 +82,10 @@ const animals = [
 //   }
 // })
 
-// 正确场景，针对每个接口使用类型保护函数
+// 正确场景，针对每个接口使用类型保护函数, 返回值是boolean
+// 注:这里接受的ani不一定是要Animal类型, 从结果上看，我们是要判断某个对象是否有某种能力
+// 所以类型保护函数，传的对象类型一般都是Object或者any
+
 function hasFireShow(ani: Object): ani is IFireShow {
   if((ani as IFireShow).singleFire && (ani as IFireShow).doubleFire) {
     return true
@@ -91,6 +94,16 @@ function hasFireShow(ani: Object): ani is IFireShow {
 }
 
 
+// 本来按照下面这个方法判断是最符合逻辑的，但是呢在运行时态，接口是不存在的，所以只能通过类型保护函数来判断
+// animals.forEach(ani => {
+//   if(ani instanceof IFireShow) {
+//     ani.singleFire()
+//     ani.doubleFire()
+//   }
+// })
+
+
+// 最终使用方法
 animals.forEach(ani => {
   if(hasFireShow(ani)) {
     ani.singleFire()

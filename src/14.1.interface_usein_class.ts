@@ -53,7 +53,7 @@ const animals1 = [
   new Lion('小狮子', 2),
   new Tiger('小虎子', 2),
   new Monkey('小猴子', 2),
-  new Lion('小狗子', 2)
+  new Dog('小狗子', 2)
 ]
 
 // 下面我们让会各个技能的动物出来表演一下
