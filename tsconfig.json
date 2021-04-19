@@ -13,7 +13,8 @@
     /* "noEmitOnError": true // 编译错误的时候不产生编译结果 */
     /*"strictPropertyInitialization": true */ // 类中更加严格的属性检查，必须要有初始化数据
     "noImplicitAny": true, // 启用隐式any类型检查，所有类型都不能为隐式any
-    "noImplicitThis": true // 启用隐式this类型检查，this不能为隐式any
+    "noImplicitThis": true, // 启用隐式this类型检查，this不能为隐式any
+    "experimentalDecorators": true
   },
   "include": ["./src"]
 }
